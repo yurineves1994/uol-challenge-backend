@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class ControllerExceptionHandler {
 
   @ExceptionHandler(NoSuchElementException.class)
-  public ResponseEntity threatNoSuchElementException(NoSuchElementException noSuchElementException) {
+  public ResponseEntity<ExceptionDTO> threatNoSuchElementException(NoSuchElementException noSuchElementException) {
     ExceptionDTO dto = new ExceptionDTO("Essa lista não possui mais usuarios disponiveis!", "400");
     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(dto);
   }
-
+  
 }

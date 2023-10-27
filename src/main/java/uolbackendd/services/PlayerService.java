@@ -2,21 +2,22 @@ package uolbackendd.services;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import lombok.AllArgsConstructor;
 import uolbackendd.entities.Player;
 import uolbackendd.entities.dtos.PlayerDTO;
 import uolbackendd.entities.enums.GroupType;
 import uolbackendd.infra.CodinameHandler;
 import uolbackendd.repositories.PlayerRepository;
 
-@AllArgsConstructor
 @Service
 public class PlayerService {
 
+  @Autowired
   private PlayerRepository repository;
 
+  @Autowired
   private CodinameHandler handle;
 
   public List<Player> createPlayer(PlayerDTO dto) {
@@ -31,9 +32,8 @@ public class PlayerService {
     return repository.findAll();
   }
 
-   private String getCodiname(GroupType groupType){
+  private String getCodiname(GroupType groupType) {
     return handle.findCodeName(groupType);
   }
-
 
 }

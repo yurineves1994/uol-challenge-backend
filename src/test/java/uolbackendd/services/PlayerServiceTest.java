@@ -3,9 +3,6 @@ package uolbackendd.services;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
-import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
 
 import jakarta.persistence.EntityManager;
-import uolbackendd.entities.Player;
 import uolbackendd.entities.dtos.PlayerDTO;
 import uolbackendd.entities.enums.GroupType;
 import uolbackendd.infra.CodinameHandler;
@@ -60,7 +56,7 @@ public class PlayerServiceTest {
 
   @Test
   void getAllPlayersSuccess() {
-    List<Player> players = playerService.getAllPlayers();  
+    playerService.getAllPlayers();  
 
     verify(repository, times(1)).findAll();
   }
@@ -70,8 +66,4 @@ public class PlayerServiceTest {
     verify(repository, times(0)).findAll();
   }
 
-  private Player createPlayer(Player player) {
-    this.entityManager.persist(player);
-    return player;
-  }
 }

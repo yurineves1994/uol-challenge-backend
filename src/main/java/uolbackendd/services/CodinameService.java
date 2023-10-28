@@ -49,7 +49,7 @@ public class CodinameService {
     }
   }
 
-  private List<String> loadJsonData() throws Exception {
+  public List<String> loadJsonData() throws Exception {
     String codenameResponse = restTemplate.getForObject(env.getProperty("avangers"), String.class);
     JsonNode jsonNode = objectMapper.readTree(codenameResponse);
 
@@ -64,7 +64,7 @@ public class CodinameService {
     return codenames;
   }
 
-  private List<String> loadXmlData() throws Exception {
+  public List<String> loadXmlData() throws Exception {
     DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
     DocumentBuilder builder = factory.newDocumentBuilder();
     Document document = builder.parse(env.getProperty("justice.league"));
